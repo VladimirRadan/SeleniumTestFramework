@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import java.time.Duration;
 
@@ -39,6 +40,18 @@ public class BasePage {
             WebElement element = getElement(locator);
             js.executeScript("arguments[0].click();", element);
         }
+    }
+
+    protected boolean matchesExpectedText(By locator, String expectedText){
+        WebElement element = getElement(locator);
+        //Assert.assertEquals(element.getText(), expectedText); ovo nikako
+        if (element.getText().trim().equals(expectedText)){
+            //log
+            return true;
+        }else {
+            //log error
+        }
+        return false;
     }
 
 
